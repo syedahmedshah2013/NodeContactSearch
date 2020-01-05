@@ -1,0 +1,61 @@
+{
+  "name": "node-contact-search",
+  "version": "1.0.0",
+  "description": "node-contact-search \n Based on Elastic Search & PostgresDB with COOKIE & SESSIONS plus SWAGGER for API",
+  "main": "index.js",
+  "config": {
+    "engine": "getcontact"
+  },
+  "engines": {
+    "node": ">=12.10.0",
+    "npm": ">=6.10.3"
+  },
+  "scripts": {
+    "//prestart": "npm run validateSwagger && npm run fix",
+    "//db:create": "node_modules/.bin/create_database",
+    "//db:drop": "node_modules/.bin/drop_database",
+    "start": "nodemon ./bin/www -w app.js -w server  -e js,json,yaml",
+    "validateSwagger": "swagger-tools validate ./server/middleware/swagger/swaggerDocs.yaml",
+    "fix": "eslint --fix .",
+    "db:init": "sequelize db:migrate",
+    "seed:init": "sequelize db:seed:all",
+    "db:createMigration": "sequelize migration:create --name migration",
+    "dockerLocal": "npm run predocker && docker run -e $npm_package_config_engine .",
+    "predocker": "docker build -t $npm_package_config_engine .",
+    "docker": "docker tag $npm_package_config_engine $npm_package_config_dockerHostUrl/$npm_package_config_engine:$npm_package_version",
+    "postdocker": "docker push $npm_package_config_dockerHostUrl/$npm_package_config_engine:$npm_package_version"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/helmet": "0.0.37",
+    "@types/morgan": "^1.7.37",
+    "@types/sequelize": "^4.28.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "elasticsearch": "^16.4.0",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "forwarded": "^0.1.2",
+    "js-yaml": "^3.13.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "pg": "6.1.0",
+    "pg-hstore": "^2.3.3",
+    "phone": "^2.3.21",
+    "sequelize": "^5.19.0",
+    "sequelize-cli": "^5.5.1",
+    "sequelize-migration-pg-extras": "^1.0.1",
+    "swagger-express-middleware": "^1.2.0",
+    "swagger-ui-express": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-google": "^0.9.1",
+    "nodemon": "^1.19.2",
+    "pgtools": "^0.3.0",
+    "swagger-tools": "^0.10.4"
+  }
+}
