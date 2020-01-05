@@ -1,4 +1,4 @@
-# This repo contains code for search the contacts from contact.sql file (using Sequelize and PostgreSQL)"
+# This repo contains code for search the contacts from contact.sql file (using Sequelize and PostgreSQL & ELASTIC SEARCH) plus implementation of SWAGGER DOCS/COOKIES
 
 
     $ NODE_ENV=aws-dev npm run db:init
@@ -9,7 +9,7 @@ If you dont have install  node-js, Download it fom here [https://nodejs.org](htt
 
 
 # Elasticsearch Setup for Mac
-I am installing on the Mac. So type the following command in your terminal to install Elasticsearch via homebrew.
+Type the following command in your terminal to install Elasticsearch via homebrew.
 ```
 brew install elasticsearch
 
